@@ -1,8 +1,9 @@
 package az.growlab.productapp.service.impl;
 
 import az.growlab.productapp.domain.Product;
-import az.growlab.productapp.dto.request.ProductRequest;
-import az.growlab.productapp.dto.response.ProductResponse;
+import az.growlab.productapp.dto.request2.ProductRequest;
+import az.growlab.productapp.dto.response2.ProductResponse;
+import az.growlab.productapp.exception.CustomNotFoundException;
 import az.growlab.productapp.repository.ProductRepository;
 import az.growlab.productapp.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -21,15 +22,16 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponse getProduct(Integer id) {
-        ProductResponse productResponse = modelMapper.map(productRepository.findById(id), ProductResponse.class);
-        return productResponse;
+        var product = productRepository.findById(id)
+                .orElseThrow(()-> new CustomNotFoundException("Product not found with id: %s"));
+        return modelMapper.map(product, ProductResponse.class);
     }
 
     @Override
     public List<ProductResponse> getAllProducts() {
-        return new ArrayList<>(productRepository.findAll()
+        return productRepository.findAll()
                 .stream().map(product -> modelMapper.map(product, ProductResponse.class))
-                .collect(Collectors.toList()));
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -39,7 +41,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public void update(Integer id, ProductRequest productRequest) {
-        productRepository.update(id, productRequest);
+        Product product = modelMapper.map(productRequest, Product.class);
+        productRepository.update(id, product);
     }
 
     @Override

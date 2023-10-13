@@ -1,4 +1,4 @@
-package az.growlab.productapp.dto.response;
+package az.growlab.productapp.dto.response2;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

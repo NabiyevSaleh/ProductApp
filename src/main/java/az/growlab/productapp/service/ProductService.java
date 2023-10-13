@@ -1,7 +1,7 @@
 package az.growlab.productapp.service;
 
-import az.growlab.productapp.dto.request.ProductRequest;
-import az.growlab.productapp.dto.response.ProductResponse;
+import az.growlab.productapp.dto.request2.ProductRequest;
+import az.growlab.productapp.dto.response2.ProductResponse;
 
 import java.util.List;
 

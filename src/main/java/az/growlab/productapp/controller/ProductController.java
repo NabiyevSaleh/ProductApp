@@ -1,7 +1,7 @@
 package az.growlab.productapp.controller;
 
-import az.growlab.productapp.dto.request.ProductRequest;
-import az.growlab.productapp.dto.response.ProductResponse;
+import az.growlab.productapp.dto.request2.ProductRequest;
+import az.growlab.productapp.dto.response2.ProductResponse;
 import az.growlab.productapp.service.impl.ProductServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
