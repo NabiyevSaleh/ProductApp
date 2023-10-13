@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    product:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://127.0.0.1:3306/productapp
+      username: saleh
+      password: saleh123
+
+server:
+  port: 8081
+
+
